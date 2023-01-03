@@ -24,10 +24,20 @@ body {
     padding: 15px;
 }
 
-.pageContent {
-    padding: 1.5%;
-}
-
 img {
     width: 100%;
+}
+
+.pageContent {
+    padding: 1.5%;
+    display: flex;
+}
+
+.sidebar {
+    flex: 20%;
+    padding-right: 2%;
+}
+
+.main {
+    flex: 80%;
 }
