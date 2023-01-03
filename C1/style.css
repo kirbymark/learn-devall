@@ -31,14 +31,17 @@ img {
 .pageContent {
     padding: 1.5%;
     display: flex;
+    display: -ms-flexbox;
 }
 
 .sidebar {
+    -ms-flex: 20%;
     flex: 20%;
     padding-right: 2%;
 }
 
 .main {
+    -ms-flex: 80%;
     flex: 80%;
 }
 
