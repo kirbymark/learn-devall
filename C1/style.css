@@ -41,3 +41,13 @@ img {
 .main {
     flex: 80%;
 }
+
+@media screen and (max-width: 700px) {
+    #navigationBar {
+        position: relative;
+    }
+    
+    .pageContent {
+        flex-direction: column;
+    }
+}
