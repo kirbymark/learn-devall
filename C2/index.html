@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>Game</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Welcome to Chat</h1>
+    <hr>
+    <p id="intro">Hi, I'm Chatie! &#128075;  Plese help me learn more about you.</p>
+    <p id="response_q1" class="thread"></p>
+    <p id="response_q2" class="thread"></p>
+    <p id="question" class="current_question">What is your name?</p>
+    <form id="answerForm" class="current_question">
+        <label for="answer">
+            Answer:
+        </label>
+      <input placeholder="enter answer here" type="text" id="answer" value="" />
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+    <form id="birthdayForm" class="current_question">
+
+        <label for="dob_month">
+            Month:
+        </label>
+
+        <select name="months" id="dob_month">
+            <option value="Jan">January</option>
+            <option value="Feb">February</option>
+            <option value="Mar">March</option>
+            <option value="Apr">April</option>
+            <option value="May">May</option>
+            <option value="Jun">June</option>
+            <option value="Jul">July</option>
+            <option value="Aug">August</option>
+            <option value="Sep">September</option>
+            <option value="Oct">October</option>
+            <option value="Nov">November</option>
+            <option value="Dec">December</option>
+        </select>
+
+        <label for="dob_day">
+            Day:
+        </label>
+      <input placeholder="Enter day" type="number" id="dob_day" value="1" min="1" max="31" />
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+
+  </body>
+  <script src="myscripts.js"></script>
+</html>
