@@ -133,6 +133,7 @@ const answerForm = document.getElementById('answerForm')
 const birthdayForm = document.getElementById('birthdayForm')
 const holidayForm = document.getElementById('holidayForm')
 const ageForm = document.getElementById('ageForm')
+const restartButton = document.getElementById('restartButton')
 
 birthdayForm.style.display = 'none'
 holidayForm.style.display = 'none'
@@ -159,4 +160,9 @@ holidayForm.addEventListener('submit', function (event) {
 ageForm.addEventListener('submit', function (event) {
   runChatbot()
   ageForm.style.display = 'none'
+})
+
+restartButton.addEventListener('click', function (event) {
+  console.log("reloading")
+  location.reload();
 })
