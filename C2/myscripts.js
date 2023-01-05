@@ -4,7 +4,14 @@ let questionNumber = 0
 const response_q1 = document.getElementById('response_q1')
 const response_q2 = document.getElementById('response_q2')
 const response_q3 = document.getElementById('response_q3')
+const response_q4 = document.getElementById('response_q4')
+const last_line_hr = document.getElementById('last_line_hr')
+const thanks = document.getElementById('thanks')
 const bullet = String.fromCodePoint(0x2714)
+
+const dob_month_selected = document.getElementById('dob_month')
+const birthdayMonth = dob_month_selected.selectedIndex + 1
+const birthdayDay = document.getElementById('dob_day').value
 
 function calcDaysAway(date) {
   const millToDays = 1000 * 60 * 60 * 24
@@ -22,16 +29,16 @@ function calcBirthdayDaysAway() {
   let birthdayYear = new Date().getFullYear()
   console.log(`year is ${birthdayYear}`)
 
-  const dob_month_selected = document.getElementById('dob_month')
-  const birthdayMonth = dob_month_selected.selectedIndex + 1
-//   console.log(`month is ${birthdayMonth}`)
-  const birthdayDay = document.getElementById('dob_day').value
-//   console.log(`day is ${birthdayDay}`)
+  // const dob_month_selected = document.getElementById('dob_month')
+  //   const birthdayMonth = dob_month_selected.selectedIndex + 1
+  // //   console.log(`month is ${birthdayMonth}`)
+  //   const birthdayDay = document.getElementById('dob_day').value
+  //   console.log(`day is ${birthdayDay}`)
 
   let birthdayDate = new Date(
     birthdayYear + '-' + birthdayMonth + '-' + birthdayDay
   )
-//   console.log(`Date is ${birthdayDate}`)
+  //   console.log(`Date is ${birthdayDate}`)
   return calcDaysAway(birthdayDate)
 }
 
@@ -97,8 +104,27 @@ function runChatbot() {
     question.innerText = 'What is your favorite Holiday ?'
   } else if (questionNumber === 2) {
     calcHolidayDaysAway()
-    response_q3.innerText = `${bullet} your favorite holiday, ${calcHolidayDaysAway()[1]}, is ${calcHolidayDaysAway()[0]} days away`
+    response_q3.innerText = `${bullet} your favorite holiday, ${
+      calcHolidayDaysAway()[1]
+    }, is ${calcHolidayDaysAway()[0]} days away`
     question.innerText = 'How old are you?'
+  } else if (questionNumber === 3) {
+    let thisYear = new Date().getFullYear()
+    const age = document.getElementById('age').value
+    const dob_month_selected = document.getElementById('dob_month')
+    // const birthdayMonth = dob_month_selected.selectedIndex + 1
+    // const birthdayDay = document.getElementById('dob_day').value
+    let birthdayDate = new Date(
+      thisYear + '-' + birthdayMonth + '-' + birthdayDay
+    )
+    let birthyear = thisYear - age
+    if (birthdayDate - new Date() > 0) {
+      birthyear--
+    }
+    response_q4.innerText = `${bullet} Your were born in ${birthyear}`
+    question.style.display = 'none'
+    last_line_hr.style.visibility = 'visible'
+    thanks.innerText = `Thanks for chating!`
   }
   questionNumber++
 }
@@ -106,9 +132,11 @@ function runChatbot() {
 const answerForm = document.getElementById('answerForm')
 const birthdayForm = document.getElementById('birthdayForm')
 const holidayForm = document.getElementById('holidayForm')
+const ageForm = document.getElementById('ageForm')
 
 birthdayForm.style.display = 'none'
 holidayForm.style.display = 'none'
+ageForm.style.display = 'none'
 
 answerForm.addEventListener('submit', function (event) {
   runChatbot()
@@ -124,4 +152,11 @@ birthdayForm.addEventListener('submit', function (event) {
 
 holidayForm.addEventListener('submit', function (event) {
   runChatbot()
+  holidayForm.style.display = 'none'
+  ageForm.style.display = 'block'
+})
+
+ageForm.addEventListener('submit', function (event) {
+  runChatbot()
+  ageForm.style.display = 'none'
 })
