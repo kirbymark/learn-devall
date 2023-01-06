@@ -96,7 +96,20 @@ function runChatbot() {
 
   const answer = document.getElementById('answer').value
 
-  if (questionNumber === 0) {
+  if (questionNumber === -1) {
+    response_q1.innerHTML =""
+    response_q2.innerHTML =""
+    response_q3.innerHTML =""
+    response_q4.innerHTML =""
+    last_line_hr.style.visibility = 'hidden'
+    thanks.innerHTML =""
+    question.innerHTML ="What is your name?"
+    answerForm.style.display = 'block'
+    birthdayForm.style.display = 'none'
+    holidayForm.style.display = 'none'
+    ageForm.style.display = 'none'
+
+  } else if (questionNumber === 0) {
     response_q1.innerText = `${bullet} Your name is, ${answer}.`
     question.innerText = 'when is your birthday?'
   } else if (questionNumber === 1) {
@@ -163,6 +176,8 @@ ageForm.addEventListener('submit', function (event) {
 })
 
 restartButton.addEventListener('click', function (event) {
-  console.log("reloading")
-  location.reload();
+  console.log('reloading')
+  questionNumber = -1
+  runChatbot()
+  // location.reload()
 })
